@@ -1,0 +1,21 @@
+package com.romijulianto.challenge1
+
+fun pyramidStar(rows: Int? = null, k: Int? = null){
+    val rows = 8;
+    var k = 0;
+    for (i in 1..rows) {
+        for (space in 1..rows - i) {
+            print("  ")
+        }
+        while (k != 2 * i - 1) {
+            print("* ")
+            ++k
+        }
+        println()
+        k = 0
+    }
+}
+
+fun main() {
+    pyramidStar()
+}
