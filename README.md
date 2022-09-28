@@ -2,5 +2,6 @@
 ###### _documentation by romi julianto_
 #### Link Resources
 - [Sylabus Day to day and Student Attendance](https://bit.ly/dokumentasikelas-mobileapps)
-- [repository from Mentor Arif Rahman](https://gitlab.com/binarxsynrgy_5/android-class)
+- [Repository from Mentor Arif Rahman](https://gitlab.com/binarxsynrgy_5/android-class)
+- [Link Zoom: Kelas](https://docs.google.com/spreadsheets/d/1NbPDKmq90K4D5j4q9dT2U_L9sSoGLY61k85g61xXCZw/edit#gid=0)
 
