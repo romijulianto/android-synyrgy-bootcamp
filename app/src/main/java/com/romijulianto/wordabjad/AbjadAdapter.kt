@@ -1,14 +1,16 @@
 package com.romijulianto.wordabjad
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class AbjadAdapter(
 
+    private val context: Context,
     private val listAbjad: List<String>
 
 ): RecyclerView.Adapter<AbjadAdapter.ViewHolder>() {
@@ -22,7 +24,8 @@ class AbjadAdapter(
         val abjads = listAbjad[position]
         holder.btnView.text = abjads
         holder.btnView.setOnClickListener{
-             Log.e("AbjadAdapter", abjads) // for testing to logcat
+             // Log.e("AbjadAdapter", abjads) // for testing to logcat
+            Toast.makeText( context, abjads, Toast.LENGTH_SHORT).show()
         }
 
     }

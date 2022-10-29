@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class AbjadActivity : AppCompatActivity() {
+    /* method onCreate */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_abjad)
@@ -39,7 +40,7 @@ class AbjadActivity : AppCompatActivity() {
             Log.e("AbjadActivity", abjad)
         }
 
-        val abjadAdapter = AbjadAdapter( abjads )
+        val abjadAdapter = AbjadAdapter( applicationContext, abjads )
         findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
             layoutManager = LinearLayoutManager( applicationContext )
             adapter = abjadAdapter
@@ -54,7 +55,7 @@ class AbjadActivity : AppCompatActivity() {
             abjads.add(item.toString())
         }
 
-        val abjadAdapter = AbjadAdapter( abjads )
+        val abjadAdapter = AbjadAdapter( applicationContext, abjads )
         findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
             layoutManager = GridLayoutManager( applicationContext, 2 )
             adapter = abjadAdapter
@@ -67,6 +68,7 @@ class AbjadActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    /* conditional for click menu button */
     var default = true
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         default=!default
