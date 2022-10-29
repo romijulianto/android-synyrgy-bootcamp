@@ -1,5 +1,6 @@
 package com.romijulianto.wordabjad.adapter
 
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
+import com.romijulianto.wordabjad.activity.WordActivity
 
 class AbjadAdapter :
     RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
@@ -32,6 +34,12 @@ class AbjadAdapter :
     override fun onBindViewHolder(holder: AbjadViewHolder, position: Int) {
         val abjads = listAbjad.get(position)
         holder.btnView.text = abjads.toString()
+        holder.btnView.setOnClickListener{
+            val context = holder.itemView.context
+            val intent = Intent(context, WordActivity::class.java)
+            intent.putExtra("abjads", holder.btnView.text.toString())
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
