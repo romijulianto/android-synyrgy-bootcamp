@@ -10,13 +10,16 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
 
-class AbjadAdapter(
+class AbjadAdapter :
+    RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
 
     /* initiate variable */
-    private val listAbjad: List<String>,
-    private val listener: OnAdapterListener,
+    private val listAbjad = ('A').rangeTo('Z').toList()
 
-    ): RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
+    /* viewHolder to read from id layout xml */
+    class AbjadViewHolder( view: View): RecyclerView.ViewHolder( view ) {
+        val btnView = view.findViewById<Button>(R.id.abjad_text)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbjadViewHolder {
         val layoutAbjad = LayoutInflater
@@ -27,27 +30,13 @@ class AbjadAdapter(
     }
 
     override fun onBindViewHolder(holder: AbjadViewHolder, position: Int) {
-        val abjads = listAbjad[position]
-        holder.btnView.text = abjads
-        holder.btnView.setOnClickListener{
-            listener.onClick( abjads )
-        }
+        val abjads = listAbjad.get(position)
+        holder.btnView.text = abjads.toString()
     }
 
     override fun getItemCount(): Int {
         return listAbjad.size
     }
-
-    /* viewHolder to read from id layout xml */
-    class AbjadViewHolder( view: View): RecyclerView.ViewHolder( view ) {
-        val btnView = view.findViewById<Button>(R.id.abjad_text)
-    }
-
-    /* create interface to set OnClick */
-    interface OnAdapterListener {
-        fun onClick( abjads: String )
-    }
-
 
     companion object Accessibility : View.AccessibilityDelegate() {
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
