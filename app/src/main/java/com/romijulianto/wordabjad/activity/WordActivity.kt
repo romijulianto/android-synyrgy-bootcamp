@@ -9,13 +9,19 @@ import com.romijulianto.wordabjad.adapter.WordAdapter
 import com.romijulianto.wordabjad.databinding.ActivityWordBinding
 
 class WordActivity : AppCompatActivity() {
+
+    /* add companion object clean code to use extra abjad in other class */
+    companion object {
+        const val ABJAD = "abjads"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityWordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val abjadId = "A"
+        val abjadId = intent?.extras?.getString(ABJAD).toString()
 
         val recyclerView = binding.recyclerViewWord
         recyclerView.layoutManager = LinearLayoutManager(this)

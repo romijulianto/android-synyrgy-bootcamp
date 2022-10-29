@@ -37,7 +37,7 @@ class AbjadAdapter :
         holder.btnView.setOnClickListener{
             val context = holder.itemView.context
             val intent = Intent(context, WordActivity::class.java)
-            intent.putExtra("abjads", holder.btnView.text.toString())
+            intent.putExtra(WordActivity.ABJAD, holder.btnView.text.toString())
             context.startActivity(intent)
         }
     }
