@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +41,12 @@ class AbjadActivity : AppCompatActivity() {
             Log.e("AbjadActivity", abjad)
         }
 
-        val abjadAdapter = AbjadAdapter( applicationContext, abjads )
+        val abjadAdapter = AbjadAdapter( abjads, object : AbjadAdapter.OnAdapterListener{
+            override fun onClick(abjads: String) {
+                Toast.makeText(applicationContext, abjads, Toast.LENGTH_SHORT).show()
+            }
+
+        })
         findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
             layoutManager = LinearLayoutManager( applicationContext )
             adapter = abjadAdapter
@@ -55,7 +61,11 @@ class AbjadActivity : AppCompatActivity() {
             abjads.add(item.toString())
         }
 
-        val abjadAdapter = AbjadAdapter( applicationContext, abjads )
+        val abjadAdapter = AbjadAdapter( abjads, object : AbjadAdapter.OnAdapterListener{
+            override fun onClick(abjads: String) {
+                Toast.makeText(applicationContext, abjads, Toast.LENGTH_SHORT).show()
+            }
+        })
         findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
             layoutManager = GridLayoutManager( applicationContext, 2 )
             adapter = abjadAdapter
