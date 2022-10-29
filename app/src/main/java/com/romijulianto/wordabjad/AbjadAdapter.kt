@@ -1,5 +1,6 @@
 package com.romijulianto.wordabjad
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,12 @@ class AbjadAdapter(
     }
 
     override fun onBindViewHolder(holder: AbjadAdapter.ViewHolder, position: Int) {
-        holder.btnView.text = listAbjad[position]
+        val abjads = listAbjad[position]
+        holder.btnView.text = abjads
+        holder.btnView.setOnClickListener{
+             Log.e("AbjadAdapter", abjads) // for testing to logcat
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -26,7 +32,6 @@ class AbjadAdapter(
     }
 
     class ViewHolder( view: View): RecyclerView.ViewHolder( view ) {
-
         val btnView = view.findViewById<Button>(R.id.abjad_text)
     }
 

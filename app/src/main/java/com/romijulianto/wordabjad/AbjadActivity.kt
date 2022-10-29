@@ -14,6 +14,11 @@ class AbjadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_abjad)
 
+        buttonAdapterLinear()
+    }
+
+    /* create function buutonAdapterLinear */
+    private fun buttonAdapterLinear() {
         /* create list data */
         /*  val abjads = listOf<String>(
             "A", "B", "C", "D", "E", "F", "G", "H", "I",
@@ -22,7 +27,6 @@ class AbjadActivity : AppCompatActivity() {
         )*/
 
         val abjads = arrayListOf<String>()
-
         for (item in 'A'..'Z'){
             abjads.add(item.toString())
         }
@@ -42,6 +46,21 @@ class AbjadActivity : AppCompatActivity() {
         }
     }
 
+    /* create function buttonAdapterGrid */
+    private fun buttonAdapterGrid() {
+        val abjads = arrayListOf<String>()
+
+        for (item in 'A'..'Z'){
+            abjads.add(item.toString())
+        }
+
+        val abjadAdapter = AbjadAdapter( abjads )
+        findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
+            layoutManager = GridLayoutManager( applicationContext, 2 )
+            adapter = abjadAdapter
+        }
+    }
+
     /* method outsite onCreate to switch Linear to Grid */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_item, menu)
@@ -54,46 +73,10 @@ class AbjadActivity : AppCompatActivity() {
         if (default)
         {
             item.setIcon(R.drawable.ic_list_view)
-            val abjads = arrayListOf<String>()
-
-            for (item in 'A'..'Z'){
-                abjads.add(item.toString())
-            }
-
-            /* if your application error, show Log.e */
-            Log.e("AbjadActivity", "size ${abjads.size}")
-            Log.e("AbjadActivity", abjads[1])
-
-            abjads.forEach { abjad ->
-                Log.e("AbjadActivity", abjad)
-            }
-
-            val abjadAdapter = AbjadAdapter( abjads )
-            findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
-                layoutManager = LinearLayoutManager( applicationContext )
-                adapter = abjadAdapter
-            }
+            buttonAdapterLinear()
         } else {
             item.setIcon(R.drawable.ic_grid_view)
-            val abjads = arrayListOf<String>()
-
-            for (item in 'A'..'Z'){
-                abjads.add(item.toString())
-            }
-
-            /* if your application error, show Log.e */
-            Log.e("AbjadActivity", "size ${abjads.size}")
-            Log.e("AbjadActivity", abjads[1])
-
-            abjads.forEach { abjad ->
-                Log.e("AbjadActivity", abjad)
-            }
-
-            val abjadAdapter = AbjadAdapter( abjads )
-            findViewById<RecyclerView?>(R.id.recyclerview_abjad).apply {
-                layoutManager = GridLayoutManager( applicationContext, 2 )
-                adapter = abjadAdapter
-            }
+            buttonAdapterGrid()
         }
         return super.onOptionsItemSelected(item)
     }
