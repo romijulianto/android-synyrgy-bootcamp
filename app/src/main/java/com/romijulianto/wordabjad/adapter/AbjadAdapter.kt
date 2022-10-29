@@ -1,9 +1,12 @@
 package com.romijulianto.wordabjad.adapter
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
 
@@ -13,20 +16,22 @@ class AbjadAdapter(
     private val listAbjad: List<String>,
     private val listener: OnAdapterListener,
 
-    ): RecyclerView.Adapter<AbjadAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from( parent.context ).inflate( R.layout.adapter_abjad, parent, false)
-        )
+    ): RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbjadViewHolder {
+        val layoutAbjad = LayoutInflater
+            .from( parent.context )
+            .inflate( R.layout.adapter_abjad, parent, false)
+        layoutAbjad.accessibilityDelegate = Accessibility
+        return AbjadViewHolder(layoutAbjad)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AbjadViewHolder, position: Int) {
         val abjads = listAbjad[position]
         holder.btnView.text = abjads
         holder.btnView.setOnClickListener{
             listener.onClick( abjads )
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +39,7 @@ class AbjadAdapter(
     }
 
     /* viewHolder to read from id layout xml */
-    class ViewHolder( view: View): RecyclerView.ViewHolder( view ) {
+    class AbjadViewHolder( view: View): RecyclerView.ViewHolder( view ) {
         val btnView = view.findViewById<Button>(R.id.abjad_text)
     }
 
@@ -43,4 +48,21 @@ class AbjadAdapter(
         fun onClick( abjads: String )
     }
 
+
+    companion object Accessibility : View.AccessibilityDelegate() {
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        override fun onInitializeAccessibilityNodeInfo(
+            host: View,
+            info: AccessibilityNodeInfo
+        ) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            val customString = host.context?.getString(R.string.search_words)
+            val customClick =
+                AccessibilityNodeInfo.AccessibilityAction(
+                    AccessibilityNodeInfo.ACTION_CLICK,
+                    customString
+                )
+            info.addAction(customClick)
+        }
+    }
 }

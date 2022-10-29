@@ -5,7 +5,7 @@
     android:id="@+id/container_abjad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AbjadActivity">
+    tools:context=".activity.AbjadActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_abjad"
