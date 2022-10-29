@@ -4,14 +4,16 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp">
+    android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/abjad_text"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        tools:text="Synrgy Academy"
+        android:backgroundTint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        tools:text="Synrgy Academy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
