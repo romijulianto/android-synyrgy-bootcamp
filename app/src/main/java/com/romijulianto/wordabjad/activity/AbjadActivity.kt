@@ -1,4 +1,4 @@
-package com.romijulianto.wordabjad
+package com.romijulianto.wordabjad.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.romijulianto.wordabjad.R
+import com.romijulianto.wordabjad.adapter.AbjadAdapter
 
 class AbjadActivity : AppCompatActivity() {
     /* method onCreate */
