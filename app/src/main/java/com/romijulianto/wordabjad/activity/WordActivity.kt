@@ -13,6 +13,7 @@ class WordActivity : AppCompatActivity() {
     /* add companion object clean code to use extra abjad in other class */
     companion object {
         const val ABJAD = "abjads"
+        const val SEARCH_PREFIX = "https://www.google.com/search?q="
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

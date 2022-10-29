@@ -1,6 +1,8 @@
 package com.romijulianto.wordabjad.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
+import com.romijulianto.wordabjad.activity.WordActivity
 
 class WordAdapter(private val abjadId: String, context: Context) :
     RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
@@ -46,6 +49,11 @@ class WordAdapter(private val abjadId: String, context: Context) :
         val words = filteredWords[position]
         val context = holder.view.context
         holder.btnView.text = words
+        holder.btnView.setOnClickListener {
+            val queryUrl: Uri = Uri.parse("${WordActivity.SEARCH_PREFIX}${words}")
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
