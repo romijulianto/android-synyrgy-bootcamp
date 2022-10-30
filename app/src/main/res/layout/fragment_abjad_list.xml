@@ -8,11 +8,9 @@
     tools:context=".fragment.AbjadListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_abjad"
+        android:id="@+id/recycler_view_abjad"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:padding="16dp"
         tools:listitem="@layout/adapter_abjad"
         tools:itemCount="26"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

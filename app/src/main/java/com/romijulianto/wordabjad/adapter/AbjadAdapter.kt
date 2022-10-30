@@ -10,7 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
-import com.romijulianto.wordabjad.activity.WordActivity
+import com.romijulianto.wordabjad.fragment.WordListFragment
 
 class AbjadAdapter :
     RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
@@ -34,10 +34,10 @@ class AbjadAdapter :
     override fun onBindViewHolder(holder: AbjadViewHolder, position: Int) {
         val abjads = listAbjad.get(position)
         holder.btnView.text = abjads.toString()
-        holder.btnView.setOnClickListener{
-            val context = holder.itemView.context
-            val intent = Intent(context, WordActivity::class.java)
-            intent.putExtra(WordActivity.ABJAD, holder.btnView.text.toString())
+        holder.btnView.setOnClickListener(){
+            val context = holder.btnView.context
+            val intent = Intent(context, WordListFragment::class.java)
+            intent.putExtra(WordListFragment.ABJAD, holder.btnView.text.toString())
             context.startActivity(intent)
         }
     }
