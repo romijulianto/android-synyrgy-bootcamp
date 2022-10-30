@@ -1,6 +1,5 @@
 package com.romijulianto.wordabjad.adapter
 
-import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +7,10 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.romijulianto.wordabjad.R
-import com.romijulianto.wordabjad.fragment.WordListFragment
+import com.romijulianto.wordabjad.fragment.AbjadListFragmentDirections
 
 class AbjadAdapter :
     RecyclerView.Adapter<AbjadAdapter.AbjadViewHolder>() {
@@ -34,11 +34,9 @@ class AbjadAdapter :
     override fun onBindViewHolder(holder: AbjadViewHolder, position: Int) {
         val abjads = listAbjad.get(position)
         holder.btnView.text = abjads.toString()
-        holder.btnView.setOnClickListener(){
-            val context = holder.btnView.context
-            val intent = Intent(context, WordListFragment::class.java)
-            intent.putExtra(WordListFragment.ABJAD, holder.btnView.text.toString())
-            context.startActivity(intent)
+        holder.btnView.setOnClickListener{
+            val action = AbjadListFragmentDirections.actionAbjadListFragmentToWordListFragment(abjads = holder.btnView.text.toString())
+            holder.btnView.findNavController().navigate(action)
         }
     }
 

@@ -13,6 +13,9 @@ import com.romijulianto.wordabjad.databinding.FragmentWordListBinding
 
 class WordListFragment : Fragment() {
 
+    /* cretate property abjadID */
+    private lateinit var abjadId: String
+
     /* add companion object clean code to use extra abjad in other class */
     companion object {
         const val ABJAD = "abjads"
@@ -22,6 +25,15 @@ class WordListFragment : Fragment() {
     /* add variable binding */
     private var _binding: FragmentWordListBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Retrieve the ABJAD from the Fragment arguments
+        arguments?.let {
+            abjadId = it.getString(ABJAD).toString()
+        }
+    }
 
     /* add function onCreateView to inflate Layout */
     override fun onCreateView(
@@ -37,7 +49,7 @@ class WordListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView = binding.recyclerViewWord
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = WordAdapter(activity?.intent?.extras?.getString(ABJAD).toString(), requireContext())
+        recyclerView.adapter = WordAdapter(abjadId, requireContext())
 
         recyclerView.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
