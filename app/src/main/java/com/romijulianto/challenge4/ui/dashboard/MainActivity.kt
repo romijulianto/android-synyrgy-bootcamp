@@ -1,12 +1,12 @@
-package com.romijulianto.challenge4.ui.auth
+package com.romijulianto.challenge4.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.romijulianto.challenge4.R
 
-class AuthActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_main)
     }
 }

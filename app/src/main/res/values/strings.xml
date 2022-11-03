@@ -20,4 +20,5 @@
     <string name="register_action">Belum punya Akun ?</string>
     <string name="header_register">Register</string>
     <string name="register_button">Daftar</string>
+    <string name="desc_profile_image">profile_image</string>
 </resources>
